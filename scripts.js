@@ -15,26 +15,33 @@ function showSlides() {
     setTimeout(showSlides, 2000); // change image every 2 seconds
 }
 
-function plusSlides(n){
+function plusSlides(n) {
     showSlides(slideIndex += n);
 }
 
-// Form Validation
+// Form Validation with Ajax
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
-        const subject = document.getElementById("subject").value;
-        const message = document.getElementById("message").value;
-
-        if (!name || !email || !phone || !subject || !message) {
-            alert("Vui lòng điền đầy đủ thông tin.")
-            event.preventDefault();
-        } else {
-            alert("Gửi thành công!");
-        }
+        event.preventDefault();
+        const formData = new FormData();
+        fetch("submit_form.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Gửi thành công!");
+                    form.reset();
+                } else {
+                    alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            })
     })
 })
 
@@ -50,4 +57,14 @@ function searchBlog() {
             articles[i].style.display = "none";
         }
     }
+}
+
+// Blog Pagination
+function paginate(pageNum){
+
+}
+
+// Comment Functionality
+function postComment(){
+    
 }

@@ -19,18 +19,12 @@
     </header>
     <div class="container">
         <input type="text" id="searchInput" onkeyup="searchBlog()" placeholder="Tìm kiếm bài viết...">
-        <section>
-            <article>
-                <h2>Bài viết 1</h2>
-                <p>Ngày đăng: 01/01/2024</p>
-                <p>Nội dung của bài viết 1. Đây là một bài viết mẫu.</p>
-            </article>
-            <article>
-                <h2>Bài viết 2</h2>
-                <p>Ngày đăng: 02/01/2024</p>
-                <p>Nội dung của bài viết 2. Đây là một bài viết mẫu</p>
-            </article>
+        <section id="blogPosts">
+            <!-- Bài viết sẽ được tải bằng JavaScript và phân trang -->
         </section>
+        <div id="pagination">
+            <!-- Nút phaantrang sẽ được tạo bằng JavaScript -->
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Lê Hữu Tiến. Mọi quyền được bảo lưu.</p>
